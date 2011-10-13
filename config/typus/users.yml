@@ -1,0 +1,8 @@
+# Use the README file as a reference to customize settings.
+
+User:
+  fields:
+    default: email, is_admin
+    form: email, is_admin
+  relationships: links
+  application: Application

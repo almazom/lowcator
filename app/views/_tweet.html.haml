@@ -1,0 +1,24 @@
+- @links.each do |link|
+  .stream-item
+
+    .more
+    .stream-item-content.tweet
+      .tweet-dogear
+      .tweet-image
+        = show_favicon(link.url)
+
+      .tweet-content
+        .tweet-row
+          %strong Title here
+        .tweet-row
+          .tweet-text.js-tweet-text
+          = link.description
+          -#= link_to show_domain_only(link.url), link.url
+
+        .tweet-row.fav
+          %span.tweet-actions.js-actions{"data-tweet-id" => "123310414686720000"}
+            %span.tweet-action.action-favorite
+              %a.unfavorite-action.js-toggle-fav{"data-favorited" => "false", :href => "#"}
+                %div.fav_wrap
+                  %i
+                  %b Favorite

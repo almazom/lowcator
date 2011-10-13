@@ -1,0 +1,340 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require bootstrap-1.3.0.min
+ *= require gritter
+ *= require_tree . 
+*/
+
+body {
+    font: 13px/1.5 Helvetica Neue, Arial, Helvetica, 'Liberation Sans', FreeSans, sans-serif;
+
+}
+
+.container_wrap {
+    margin-top: 60px;
+    /*margin-bottom: 200px;*/
+}
+
+#gritter-notice-wrapper {
+    position: fixed;
+    text-align: left;
+    top: 120px;
+    right: 20px;
+    width: 301px;
+    z-index: 9999;
+}
+
+.padding_content {
+    padding: 10px;
+}
+
+.need_right_border {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, .5);
+    -moz-box-shadow: 0 3px 4px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, .5);
+    border-right: 1px solidid rgb(238, 238, 238);
+}
+
+.page-header2 {
+    /*background: whiteSmoke;*/
+    border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    padding: 15px 20px 0 20px;
+    position: relative;
+    z-index: 2;
+    zoom: 1;
+    border-top-left-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
+    /*height: 115px;*/
+}
+
+.tweet-box-title {
+    overflow: hidden;
+    padding: 1px 0;
+}
+
+.tweet-box h2 {
+    font: bold 18px Helvetica Neue, Helvetica, sans-serif;
+    text-shadow: 0 1px 0 white;
+    margin: 0 0 6px 0;
+    color: rgb(153, 153, 153);
+}
+
+input#search_value {
+    background-color: white;
+}
+
+.tweet-box input:hover {
+    outline: none;
+    border: 1px solid rgb(153, 153, 153);
+    cursor: text !important;
+}
+
+#under_search {
+    float: none;
+    clear: both;
+}
+
+#around_search {
+    padding: 0 0 0 20px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    height: 38px;
+}
+
+.tweet {
+    padding: 10px 20px;
+    font-size: 13px;
+    position: relative;
+    zoom: 1;
+}
+
+.favorited .tweet-dogear {
+    background-position: 0 0;
+}
+
+tweet.favorited .tweet-dogear {
+    background: url(/assets/tweet-dogear.png) no-repeat 0 0;
+}
+
+.tweet-dogear {
+    background: url(/assets/tweet-dogear.png) no-repeat 0 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 25px;
+    /*border:1px solid red;*/
+}
+
+.tweet-image {
+    float: left;
+    height: 48px;
+    overflow: hidden;
+    width: 20px;
+    margin-top: 3px;
+    padding: 10px;
+}
+
+.tweet-actions a span i {
+    display: inline-block;
+    vertical-align: baseline;
+    margin-bottom: -3px;
+    margin-right: 3px;
+    position: relative;
+}
+
+.tweet-content {
+    margin-left: 40px;
+    /*min-height: 48px;*/
+}
+
+.tweet-row {
+    display: block;
+    position: relative;
+    line-height: 15px;
+}
+
+.tweet-actions a span b {
+    font-weight: normal;
+}
+
+.tweet.favorited .tweet-actions a div.fav_wrap i {
+    background: transparent url(/assets/sprite-icons.png) -63px 0 no-repeat;
+}
+
+.tweet-actions a div.fav_wrap i {
+    text-indent: -99999px;
+    outline: none;
+    background: transparent url(/assets/sprite-icons.png) -48px 0 no-repeat;
+    width: 15px;
+    height: 15px;
+    margin: 0 2px 0 2px;
+    display: block;
+}
+
+.tweet-actions a:hover span b {
+    text-decoration: underline;
+}
+
+.tweet-actions a span b {
+    font-weight: normal;
+}
+
+.tweet-actions .favorite-action span i {
+    background-position: -32px 0;
+}
+
+div.fav_wrap {
+    position: relative;
+}
+
+div.fav_wrap b {
+    position: absolute;
+    top: 0px;
+    left: 20px;
+}
+
+.stream-item {
+    position: relative;
+    border-bottom: 1px solid rgb(235, 235, 235);
+    min-height: 60px;
+    clear: both;
+    display: block;
+    outline: none;
+    margin-top: -1px;
+    border-top: 1px solid transparent;
+}
+
+.tweet-text {
+    padding: 0;
+    font-family: Arial, "Helvetica Neue", sans-serif;
+    line-height: 19px;
+    word-wrap: break-word;
+}
+
+.stream-item :hover {
+    background-color: #F5F5F5;
+    cursor: pointer;
+}
+
+.around_wrap_content {
+    border: 1px solid #F5F5F5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+.tweet-row.fav {
+    padding: 10px 0 0 0;
+    /*width: 80px;*/
+    /*border: 1px solid green;*/
+
+}
+
+a:visited, a:link, a:hover {
+    color: #93A644;
+}
+
+.tweet-row.fav a:visited, .tweet-row.fav a:link, .tweet-row.fav a:hover {
+    font-size: 11px;
+    font-weight: normal;
+    color: #93A644;
+}
+
+.tweet-row.fav a b {
+    font-weight: normal;
+}
+
+.stream-items {
+    padding-top: -20px;
+}
+
+.tabs, .pills {
+    margin: 0 0 -1px !important;
+
+}
+
+.stream-item .more {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 5px;
+    right: 5px;
+    background: transparent url(/assets/sprite-icons.png) -288px 0 no-repeat;
+    /*border:  1px solid red;*/
+    z-index: 1000;
+    display: none;
+}
+
+.details-pane {
+    background: white;
+    position: absolute;
+    /*left: 10px;*/
+    top: 0px;
+    left: -20px;
+    max-width: 490px;
+    min-width: 370px;
+    -webkit-border-top-right-radius: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+    -moz-border-radius-topright: 6px;
+    -moz-border-radius-bottomright: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    display: none;
+    overflow: hidden;
+}
+
+#details-pane-outer {
+    z-index: 3;
+    left: 0;
+    right: 0;
+    top: 60px;
+    width: 100%;
+    _position: static;
+    _width: 520px;
+    _float: left;
+    _display: inline-block;
+}
+
+details-pane-shell {
+    position: relative;
+    width: 920px;
+    margin: 0 auto;
+    padding: 0 40px;
+    _position: static;
+    _width: 520px;
+    _padding: 0;
+    _margin: 0;
+}
+
+.details-pane .inner-pane {
+    height: 100%;
+    margin-left: 10px;
+}
+
+div.pane-toolbar {
+    background: rgb(244, 244, 244);
+    padding: 6px 10px 6px 20px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-right-radius: 5px;
+    margin-left: -10px;
+}
+
+.details-pane .pane-components {
+    overflow-y: auto;
+    position: relative;
+}
+
+.more_block {
+    position: relative;
+}
+
+div.pane-toolbar {
+    background: none repeat scroll 0 0 #F4F4F4;
+    border-top-right-radius: 5px;
+    margin-left: -10px;
+    padding: 6px 10px 6px 20px;
+}
+
+div.pane-toolbar a.pane-close {
+    text-decoration: none;
+}
+
+div.pane-toolbar a.pane-close {
+    float: right;
+}
+
+div.pane-toolbar .toolbar-control {
+    color: #999999 !important;
+    font-size: 12px;
+    outline: medium none;
+}
+

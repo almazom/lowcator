@@ -1,0 +1,8 @@
+# Use the README file as a reference to customize settings.
+
+Link:
+  fields:
+    default: description, url, published, user_id
+    form: description, url, published, user_id
+  relationships: user
+  application: Application

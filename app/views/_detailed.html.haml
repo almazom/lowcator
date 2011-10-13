@@ -1,0 +1,17 @@
+#details-pane-outer
+  .details-pane-shell
+    .details-pane.opened{:style => "display:block;width: 380px; "}
+      .inner-pane.active
+        .pane-toolbar.pane-built-in
+          %a.pane-close.toolbar-control{:href => "#"}
+            close
+            %span ×
+          %br{:style => "clear: both"}
+        .pane-components{:style => "height: 492px; "}
+          .pane-components-inner.tweet-components
+            .component
+              .conversation
+                .related-tweets
+                .tweet.js-actionable-tweet.details-pane-tweet
+                  .tweet-row
+                    .tweet-text.tweet-text-large extended text here
