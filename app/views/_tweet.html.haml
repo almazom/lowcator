@@ -1,24 +1,49 @@
-- @links.each do |link|
-  .stream-item
+- if !@links.blank?
+  - @links = Array.new(1, @links) if @links.kind_of?(Link)
+  - @links.each do |link|
+    .stream-item
+      .more
+      .stream-item-content.tweet{:class => !is_favorited?(link.id) ? 'unfavorited' : 'favorited', "data-link_id" => link.id}
+        - unless @link_extented
+          .tweet-dogear
+          .tweet-image
+            = show_favicon(link.url)
+        .tweet-content
+          -#.tweet-row
+          -#  %strong Title here
+          .tweet-row
+            .tweet-text.js-tweet-text
+            = @link_extented ? link.description : truncate(link.description, :length => 150)
+            = link_to show_domain_only(link.url), link.url, :target => "_blank"
+          .tweet-row.fav
+            %span.tweet-actions.js-actions
+              %span.tweet-action.action-favorite
 
-    .more
-    .stream-item-content.tweet
-      .tweet-dogear
-      .tweet-image
-        = show_favicon(link.url)
+                - if !is_favorited? link.id
+                  %a.favorite-action.js-toggle-fav{"data-favorited" => "false", :href => "#"}
+                    %div.fav_wrap
+                      .fav_un_orited.h
+                        = form_for Favorit.new, :remote => true do |f|
+                          = f.number_field :user_id, :value => current_user.id
+                          = f.number_field :link_id, :value => link.id
+                          = f.submit 'Save'
+                      %i
+                      %b= t(:favorite)
+                - else
+                  %a.unfavorite-action.js-toggle-fav{"data-favorited" => "false", :href => "#"}
+                    %div.fav_wrap
+                      .fav_un_orited.h
+                      %i
+                      %b= link_to t(:unfavorite), current_user.favorits.where(:link_id => link.id).first, :link_id =>'12344', :method => :delete, :remote => true
+  - if @link_extented
+    = form_for 'comment', :url => link_comments_path(@links), :remote => true do |f|
+      = f.text_area :body
+      .clearfix
+      = button_tag(:type => 'submit', :class=> 'btn primary submit') do
+        = t(:add_comment)
+    .clearfix
+    .comments_place= render :partial => "comments/comment"
 
-      .tweet-content
-        .tweet-row
-          %strong Title here
-        .tweet-row
-          .tweet-text.js-tweet-text
-          = link.description
-          -#= link_to show_domain_only(link.url), link.url
 
-        .tweet-row.fav
-          %span.tweet-actions.js-actions{"data-tweet-id" => "123310414686720000"}
-            %span.tweet-action.action-favorite
-              %a.unfavorite-action.js-toggle-fav{"data-favorited" => "false", :href => "#"}
-                %div.fav_wrap
-                  %i
-                  %b Favorite
+- else
+  %h2= t(:no_result)

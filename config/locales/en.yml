@@ -4,3 +4,7 @@
 en:
   hello: "Hello world"
   searching_title: "Searching title here"
+  favorited_sucessfully: "Favorited successfully!"
+  unfavorite: "Unfavorite"
+  favorite: "Favorite"
+  no_result: "No result"

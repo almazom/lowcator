@@ -40,6 +40,7 @@
                   %a.dropdown-toggle{:href => "#"}= show_current_user
                   %ul.dropdown-menu
                     %li= link_to 'Profile', edit_user_registration_path
+                    %li= link_to 'Add link', new_user_link_path(current_user)
                     %li.divider
                     %li= link_to 'Sign out', destroy_user_session_path, :method => 'delete'
                     -#%li
@@ -73,15 +74,17 @@
                 #around_search
                   #under_search
                     %ul.tabs
-                      %li.active
+                      %li.active.results_tab
                         %a{:href => "#"} Results
-                      %li
+                      %li.favorits_tab
                         %a{:href => "#"} Favorites
-                      %li
+                      %li.my_links_tab
                         %a{:href => "#"} My links
 
-                .stream-items
-                  - @links ||= Link.all
-                  = render :partial => "/tweet"
+
+                = yield
+                -#.stream-items
+                -#  - @links ||= Link.all
+                -#  = render :partial => "/tweet"
               .span5.padding_content.more_block
                 = render :partial => "/detailed"

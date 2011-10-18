@@ -1,8 +1,6 @@
 class Link < ActiveRecord::Base
-
   belongs_to :user
-  #acts_as_taggable_on :tags
   has_many :favorits
-
-
+  has_many :comments
+  default_scope order("created_at DESC")
 end

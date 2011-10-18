@@ -7,26 +7,28 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require bootstrap-alerts-1.3.0
-//= require bootstrap-dropdown-1.3.0
-//= require bootstrap-modal-1.3.0
-//= require bootstrap-twipsy-1.3.0
-//= require bootstrap-popover-1.3.0
-//= require bootstrap-scrollspy-1.3.0
-//= require bootstrap-tabs-1.3.0
 //= require_tree .
+
 
 function alert(msg) {
     $('.alert-message').find('p').html(msg).end().show();
 
 }
 
+
 $(document).ready(function() {
     $(".alert-message").alert();
     $('.alert-message').hide();
 
-    $('.pane-close.toolbar-control').live("click",function(){
-       $('.details-pane').toggle('slow');
+    $.ajaxSetup({
+        'beforeSend': function(xhr) {
+            xhr.setRequestHeader("Accept", "text/javascript")
+        }
+    });
+
+
+    $('.pane-close.toolbar-control').live("click", function() {
+        $('.details-pane').toggle('slow');
     });
 
     $('.stream-item').hover(function() {

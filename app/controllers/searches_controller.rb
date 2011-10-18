@@ -1,4 +1,6 @@
 class SearchesController < ApplicationController
+  layout "general"
+
   # GET /searches
   # GET /searches.json
   def index

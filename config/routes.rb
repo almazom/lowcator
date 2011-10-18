@@ -1,15 +1,23 @@
 Ur3::Application.routes.draw do
 
+
   devise_for :users
-  resources :favorits, :searches, :only => [:index]
+  resources :searches, :only => [:index]
 
   resources :users, :shallow => true do
     resources :favorits, :links
     resources :searches, :only => [:index]
+
   end
 
-  resources :links
+  resources :links do
+    resources :comments
+    member do
+      get 'show_custom_link'
+    end
+  end
 
+  resources :favorits, :comments
 
 
   # The priority is based upon order of creation:

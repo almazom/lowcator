@@ -3,10 +3,12 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require bootstrap-1.3.0.min
  *= require gritter
  *= require_tree . 
 */
+
+
+/* require bootstrap-1.3.0.min**/
 
 body {
     font: 13px/1.5 Helvetica Neue, Arial, Helvetica, 'Liberation Sans', FreeSans, sans-serif;
@@ -86,11 +88,27 @@ input#search_value {
     height: 38px;
 }
 
-.tweet {
+.span10 .tweet {
     padding: 10px 20px;
     font-size: 13px;
     position: relative;
     zoom: 1;
+}
+
+.details-pane .tweet {
+    padding: 10px 5px;
+    font-size: 15px;
+    /*position: relative;*/
+    /*zoom: 1;*/
+}
+
+.details-pane .fav_wrap {
+    display: none;
+
+}
+
+.details-pane .tweet-row {
+    line-height: 20px;
 }
 
 .favorited .tweet-dogear {
@@ -113,7 +131,7 @@ tweet.favorited .tweet-dogear {
 
 .tweet-image {
     float: left;
-    height: 48px;
+    height: 38px;
     overflow: hidden;
     width: 20px;
     margin-top: 3px;
@@ -128,7 +146,7 @@ tweet.favorited .tweet-dogear {
     position: relative;
 }
 
-.tweet-content {
+.span10 .tweet-content {
     margin-left: 40px;
     /*min-height: 48px;*/
 }
@@ -143,11 +161,11 @@ tweet.favorited .tweet-dogear {
     font-weight: normal;
 }
 
-.tweet.favorited .tweet-actions a div.fav_wrap i {
-    background: transparent url(/assets/sprite-icons.png) -63px 0 no-repeat;
-}
+/*.tweet.favorited .tweet-actions a  div.fav_wrap i {*/
+/*background: transparent url(/assets/sprite-icons.png) -63px 0 no-repeat;*/
+/*}*/
 
-.tweet-actions a div.fav_wrap i {
+.tweet-actions a i {
     text-indent: -99999px;
     outline: none;
     background: transparent url(/assets/sprite-icons.png) -48px 0 no-repeat;
@@ -155,6 +173,10 @@ tweet.favorited .tweet-dogear {
     height: 15px;
     margin: 0 2px 0 2px;
     display: block;
+}
+
+.tweet-actions a.unfavorite-action i {
+    background-position: -63px 0;
 }
 
 .tweet-actions a:hover span b {
@@ -197,7 +219,12 @@ div.fav_wrap b {
     word-wrap: break-word;
 }
 
-.stream-item :hover {
+.details-pane .stream-item:hover {
+    background: none;
+    cursor: inherit;
+}
+
+.stream-item:hover {
     background-color: #F5F5F5;
     cursor: pointer;
 }
@@ -251,13 +278,13 @@ a:visited, a:link, a:hover {
 }
 
 .details-pane {
+    display: none;
     background: white;
-    position: absolute;
-    /*left: 10px;*/
-    top: 0px;
-    left: -20px;
+    position: fixed;
+    left: 934px;
     max-width: 490px;
     min-width: 370px;
+    width: 380px;
     -webkit-border-top-right-radius: 6px;
     -webkit-border-bottom-right-radius: 6px;
     -moz-border-radius-topright: 6px;
@@ -267,7 +294,6 @@ a:visited, a:link, a:hover {
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-    display: none;
     overflow: hidden;
 }
 
@@ -338,3 +364,6 @@ div.pane-toolbar .toolbar-control {
     outline: medium none;
 }
 
+.h {
+    display: none;
+}

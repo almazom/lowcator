@@ -1,7 +1,12 @@
+#class AnonymousUser < StandardError
+#  # пользователь не найден
+#end
+
 module ApplicationHelper
   def show_current_user
     current_user.email
   end
+
 
   def get_class_for_navigation current
     if controller.controller_name.to_s == current
@@ -12,7 +17,10 @@ module ApplicationHelper
   end
 
   def is_favorited? link_id
-    Link.find(link_id).favorits.where(:user_id => current_user.id).exists?
+    #raise AnonymousUser if current_user
+
+    current_user.favorits.where(:link_id => link_id).exists?
+
   end
 
   def show_domain_only url

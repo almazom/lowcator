@@ -1,23 +1,31 @@
 class LinksController < ApplicationController
-  # GET /links
-  # GET /links.json
+
+
+  def show_custom_link
+    raise 'no link_id in get vars' unless params[:id]
+    #raise params.to_json
+    @links = Link.find(params[:id])
+    render_tweets
+  end
+
+
   def index
     @links = current_user.links
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @links }
+      format.html
+      format.js { render_tweets }
     end
   end
 
-  # GET /links/1
-  # GET /links/1.json
   def show
-    @link = Link.find(params[:id])
+    @links = Link.find(params[:id])
+
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @link }
+      format.html
+      @link_extented = true
+      format.js { render_tweets }
     end
   end
 

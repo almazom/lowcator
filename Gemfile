@@ -18,6 +18,7 @@ end
 
 gem 'rack', '1.3.3'
 gem "gritter", "0.6.2"
+gem "mysql2"
 
 gem 'jquery-rails'
 gem 'haml'
@@ -29,7 +30,8 @@ gem 'ruby_parser'
 gem 'acts-as-taggable-on', '~>2.1.0'
 
 
-gem 'twitter-bootstrap-rails'
+#gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem "rspec-rails", ">= 2.6.1", :group => [:development, :test]
 gem "factory_girl_rails", ">= 1.2.0", :group => :test
 gem "cucumber-rails", ">= 1.0.2", :group => :test

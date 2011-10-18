@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name
 
-  has_many :links
-  has_many :favorits
+  has_many :links, :dependent => :destroy
+  has_many :favorits, :dependent => :destroy
 
   before_save :check_changed_or_not_is_admin?
 
