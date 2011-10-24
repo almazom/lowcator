@@ -1,9 +1,9 @@
 class CommentsController < ApplicationController
-  # GET /comments
-  # GET /comments.json
-  def index
 
+  def index
     @comments = params[:link_id].blank? ? Comments.all : Link.find(params[:link_id]).comments.all
+
+    #raise @comments.count.to_json
 
     respond_to do |format|
       format.html # index.html.erb

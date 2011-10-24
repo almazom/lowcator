@@ -51,6 +51,7 @@ gem "guard-cucumber", ">= 0.6.1", :group => :development
 gem "rails-footnotes", ">= 3.7", :group => :development
 
 gem "typus"
+gem "forgery"
 
 
 # Use unicorn as the web server

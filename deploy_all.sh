@@ -1,0 +1,1 @@
+rsync -e ssh --progress -lthravz  --exclude '.idea' ./ al_h:/home/almazom/lowcator

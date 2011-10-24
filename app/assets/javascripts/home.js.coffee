@@ -86,11 +86,38 @@ link_expand = () ->
       success: link_expand_success
       error: error_ajax
 
+
+cl = (msg) ->
+  console.log(msg)
+
+lastPostFunc = () ->
+  console.log('bottom')
+  elements_on_page = $('.stream-items .stream-item').length
+  $('.stream-items').fadeTo('slow','.1')
+  cl elements_on_page
+
+  $.ajax
+    type: "get"
+    url: "/"
+    data: "offset=#{elements_on_page}"
+    dataType: "html"
+    success: (msg) -> $('.stream-items .stream-item:last').after(msg); $('.stream-items').fadeTo('slow','1')
+    error: error_ajax
+
+
+
+
+detect_on_scrall_2_the_bottom = () ->
+  $(window).scroll -> lastPostFunc()  if $(window).scrollTop() is $(document).height() - $(window).height()
+
 $(document).ready ->
   bind_favorits_tab()
   bind_results_tab()
   bind_my_links_tab()
   link_expand()
+  detect_on_scrall_2_the_bottom()
+
+  $('.details-pane').height($(document).height()-100)
 
 
   $('.js-toggle-fav').live 'click', ->
@@ -98,5 +125,7 @@ $(document).ready ->
 
       if $(link).hasClass('favorite-action')
         $(link).find('form').submit()
+        false
       else
         $(link).closest('.hide_my_link_of_unfovarite').find('a').click()
+        false

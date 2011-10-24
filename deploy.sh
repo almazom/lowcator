@@ -1,0 +1,1 @@
+rsync -e ssh --progress -lthravz  --exclude '.idea' --exclude 'config/database.yml' --exclude 'test' --exclude '.git' --exclude '.bundle' --exclude 'tmp' --exclude '*.pid' --exclude '*.sqlite3'  --exclude 'db/development.sqlite3' --exclude 'log'  ./ al_h:~/carlos/production

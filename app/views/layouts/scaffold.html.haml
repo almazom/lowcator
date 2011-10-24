@@ -1,0 +1,12 @@
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title add links
+    = stylesheet_link_tag "bootstrap.min.css"
+    = javascript_include_tag "http://code.jquery.com/jquery-1.6.2.min.js","markitup/jquery.markitup.js", "markitup/set.js"
+  %body
+    :javascript
+      $(document).ready(function() {$('#markItUp').markItUp(mySettings)});
+    - if flash[:notice]
+      .alert-message.success= flash[:notice]
+    .container= yield

@@ -7,3 +7,22 @@
     width: 300px;
     height: 100px;
 }
+
+.details-pane .stream-item{
+    border: none;
+}
+
+.comments_place{
+    color: gray;
+    font-size: 11px;
+}
+
+.comment{
+    padding-top: 10px;
+    border-bottom: 1px dotted #EBEBEB;
+}
+
+span.date{
+    font-style: italic;
+    font-size:10px;
+}

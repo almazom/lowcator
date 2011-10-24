@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+50.times do
+  p link =  Link.create(:description => Forgery(:lorem_ipsum).words(11), :url => 'http://'+Forgery(:lorem_ipsum).words(1)+'.ru', :user_id => User.first.id )
+
+  50.times do
+    p link.comments.create(:body => Forgery(:lorem_ipsum).words(11))
+  end
+end
+

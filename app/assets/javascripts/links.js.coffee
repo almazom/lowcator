@@ -6,18 +6,17 @@
 error_ajax = () ->
   alert("error")
 
+update_comments_success = (data) ->
+  $('.comments_place').fadeTo('slow','.3', -> $(this).html(data).fadeTo('fast','1'))
+  setTimeout("$('.details-pane').hide('fast')",1500);
 
 window.update_comments = (link_id) ->
-  console.log(1)
   $.ajax
     type: "get"
     url: "/links/#{link_id}/comments"
     dataType: "html"
-    success: (msg) ->
+    success: update_comments_success
     error: error_ajax
-
-#  $('.comments_place').html(msg)
 
 
 $(document).ready ->
-#  $('#link_tag_list').autocomplete({source: "/ajax/users"})
