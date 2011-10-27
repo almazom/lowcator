@@ -11,11 +11,13 @@ class LinksController < ApplicationController
 
 
   def index
-    @links = current_user.links
+    raise 'no_current_user' unless current_user
+    #@links = current_user.links
+    @links = Link.search '', :with => {:user_id => current_user.id}
 
     respond_to do |format|
-      format.html
-      format.js { render_tweets }
+      format.html {render :layout => 'general'}
+      #format.js { render_tweets }
     end
   end
 
@@ -37,9 +39,11 @@ class LinksController < ApplicationController
     @link = current_user.links.build()
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render :layout => "scaffold" }
       format.json { render json: @link }
     end
+
+
   end
 
   # GET /links/1/edit

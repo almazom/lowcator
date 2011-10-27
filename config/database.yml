@@ -12,7 +12,7 @@ development:
   database: lowcator_dev
   pool: 5
   username: root
-  password: ****
+  password: up9Fii4aeQuiNgei
 
 
 # Warning: The database defined as "test" will be erased and
@@ -31,7 +31,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: lowcator_almaz
+  database: lowcator_dev
   pool: 5
   username: root
-  password:
+  password: up9Fii4aeQuiNgei

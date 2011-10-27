@@ -4,6 +4,8 @@
     %title Ur3
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
+
+
     = csrf_meta_tags
   %body(data-limit = LIMIT)
     .topbar-wrapper{:style => "z-index: 5;"}
@@ -13,11 +15,11 @@
             %h3
               = link_to 'Lawcator', root_path
             %ul.nav
-              %li{:class => get_class_for_navigation('home')}
-                = link_to 'Home', root_path
-              - if current_user && current_user.favorits
-                %li{:class => get_class_for_navigation('favorits')}
-                  = link_to 'Favorits', user_favorits_path(current_user)
+              -#%li{:class => get_class_for_navigation('home')}
+              -#  = link_to 'Home', root_path
+              -#- if current_user && current_user.favorits
+              -#  %li{:class => get_class_for_navigation('favorits')}
+              -#    = link_to 'Favorits', user_favorits_path(current_user)
             - if current_user
               %ul.nav.secondary-nav
                 %li.dropdown
@@ -36,8 +38,8 @@
                     %li= link_to t(:register), new_user_registration_path
     .container_wrap
       .container
-        .alert-message.warning.fade.in{"data-alert" => "alert"}
-          = link_to 'x', '#', :class => 'close'
+        -#.alert-message.warning.fade.in{"data-alert" => "alert"}
+        -#  = link_to 'x', '#', :class => 'close'
           %p
         .row
           .span16.around_wrap_content
@@ -51,20 +53,28 @@
                       .text-area
                         .text-area-editor.twttr-editor
                           = form_for 'search', :url => searches_path, :method => "get" do |f|
-                            = f.text_field :value
+                            = f.hidden_field :page, :value => controller.controller_name
+                            = f.text_field :value, :value => params[:search] && params[:search][:value] ? params[:search][:value] : ''
                             %button.btn.success Go
                 #around_search
+
                   #under_search
                     %ul.tabs
-                      %li.active.results_tab
-                        %a{:href => "#"} Results
+                      - page = params[:search] ? params[:search][:page] : nil
+                      -#%li.results_tab{:class => (!page.blank? && page.include?('result') or page.nil?) ? 'active' : ''}
+                      %li.results_tab{:class => (!page.blank? && page.include?('home') or controller.controller_name == 'home') ? 'active' : ''}
+                        =link_to 'Results', root_path
                       - if current_user
-                        %li.favorits_tab
-                          %a{:href => "#"} Favorites
-                        %li.my_links_tab
-                          %a{:href => "#"} My links
 
 
+                        %li.favorits_tab{:class => (params[:search] && params[:search][:page].include?('favorit') or controller.controller_name == 'favorits') ? 'active' : '' }
+                          = link_to t(:favorits), user_favorits_path(current_user)
+
+
+                        %li.my_links_tab{:class => (controller.controller_name == 'links' || params[:search] && params[:search][:page].include?('links')) ? 'active' : '' }
+                          =link_to t(:my_links), links_path
+                - if @links.length > 0 && params[:search]
+                  %h2= t(:you_looking_for)+': '+params[:search][:value]
                 = yield
                 -#.stream-items
                 -#  - @links ||= Link.all

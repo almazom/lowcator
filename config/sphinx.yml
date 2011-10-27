@@ -1,0 +1,7 @@
+development:
+  port: 9312
+  morphology: stem_en, stem_ru
+test:
+  port: 9313
+production:
+  port: 9312

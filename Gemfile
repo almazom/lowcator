@@ -17,7 +17,6 @@ group :assets do
 end
 
 gem 'rack', '1.3.3'
-gem "gritter", "0.6.2"
 gem "mysql2"
 
 gem 'jquery-rails'
@@ -52,6 +51,7 @@ gem "rails-footnotes", ">= 3.7", :group => :development
 
 gem "typus"
 gem "forgery"
+gem 'thinking-sphinx', '2.0.5'
 
 
 # Use unicorn as the web server

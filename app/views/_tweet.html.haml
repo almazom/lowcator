@@ -2,7 +2,6 @@
   - @links = Array.new(1, @links) if @links.is_a?(Link)
   - @links.each do |link|
     .stream-item{:id => link.id}
-
       .stream-item-content.tweet{:class => fav_class_detection(link.id), "data-link_id" => link.id }
         .more
         - unless @link_extented
@@ -12,6 +11,9 @@
         .tweet-content
           .tweet-row
             .tweet-text.js-tweet-text
+
+            -#= @link_extented ? link.description.strip : truncate(link.description.strip, :length => 150)
+
             = @link_extented ? link.description.html_safe : truncate(link.description.html_safe, :length => 150)
             = link_to show_domain_only(link.url), link.url, :target => "_blank"
           .tweet-row.fav

@@ -1,10 +1,19 @@
 class FavoritsController < ApplicationController
+  layout 'general'
 
 
   def index
-    @links = current_user.links.joins(:favorits).all
+    #@links = current_user.links.joins(:favorits).all
+
+    #TODO: refactor me
+    #links_id = Favorit.where(:user_id => current_user.id).select(:link_id).all.map(&:link_id)
+    #@links = Link.find(links_id)
+
+
+    @links = Link.search '', :with => {:favorits_user_id => current_user.id}
 
     respond_to do |format|
+      format.html
       format.js { render :partial => "/tweet" }
     end
   end

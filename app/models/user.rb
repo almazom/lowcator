@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
 
   has_many :links, :dependent => :destroy
   has_many :favorits, :dependent => :destroy
-
   before_save :check_changed_or_not_is_admin?
 
 

@@ -4,6 +4,14 @@ class Link < ActiveRecord::Base
   has_many :comments
   default_scope order("created_at DESC")
 
+  define_index do
+    indexes :description
+
+    has user_id
+    has favorits.user_id, :as => :favorits_user_id
+  end
+
+
   before_validation(:on => :create) do
     self.url = 'http://'+url if ! url.include?('http://')
   end

@@ -33,44 +33,48 @@ switch_to_my_links_success = (data) ->
 
 
 error_ajax = () -> alert('Ajax error!')
-
-bind_favorits_tab = () ->
-  $('.favorits_tab a').live 'click', (e) ->
-    $.ajax
-      type: "get"
-      url: "/users/1/favorits"
-      dataType: "html"
-      success: switch_to_favorites_success
-      error: error_ajax
-
-
-bind_results_tab = () ->
-  $('.results_tab a').live 'click', (e) ->
-    $.ajax
-      type: "get"
-      url: "/"
-      dataType: "html"
-      success: switch_to_results_success
-      error: error_ajax
+#
+#bind_favorits_tab = () ->
+#  $('.favorits_tab a').live 'click', (e) ->
+#    $.ajax
+#      type: "get"
+#      url: "/users/1/favorits"
+#      data: 'search='+$('#search_value').val()
+#      dataType: "html"
+#      success: switch_to_favorites_success
+#      error: error_ajax
 
 
-bind_results_tab = () ->
-  $('.results_tab a').live 'click', (e) ->
-    $.ajax
-      type: "get"
-      url: "/"
-      dataType: "html"
-      success: switch_to_results_success
-      error: error_ajax
+#bind_results_tab = () ->
+#  $('.results_tab a').live 'click', (e) ->
+#    $.ajax
+#      type: "get"
+#      url: "/"
+#      data: 'search='+$('#search_value').val()
+#      dataType: "html"
+#      success: switch_to_results_success
+#      error: error_ajax
 
-bind_my_links_tab = () ->
-  $('.my_links_tab a').live 'click', (e) ->
-    $.ajax
-      type: "get"
-      url: "/links"
-      dataType: "html"
-      success: switch_to_my_links_success
-      error: error_ajax
+
+#bind_results_tab = () ->
+#  $('.results_tab a').live 'click', (e) ->
+#    $.ajax
+#      type: "get"
+#      url: "/"
+#      data: 'search='+$('#search_value').val()
+#      dataType: "html"
+#      success: switch_to_results_success
+#      error: error_ajax
+#
+#bind_my_links_tab = () ->
+#  $('.my_links_tab a').live 'click', (e) ->
+#    $.ajax
+#      type: "get"
+#      url: "/links"
+#      data: 'search='+$('#search_value').val()
+#      dataType: "html"
+#      success: switch_to_my_links_success
+#      error: error_ajax
 
 
 
@@ -105,17 +109,25 @@ lastPostFunc = () ->
     error: error_ajax
 
 
-
-
 detect_on_scrall_2_the_bottom = () ->
   $(window).scroll -> lastPostFunc()  if $(window).scrollTop() is $(document).height() - $(window).height()
 
+
+on_tab_click = () ->
+  $('.tabs li a').live 'click',() ->
+    tab = $(this).closest('li').attr('class').replace('active','').replace('_tab','')
+    form = $('.text-area-editor form')
+    form_action = $(form).attr('action').split('?')[0]
+    $('input#search_page').val(tab)
+
+
 $(document).ready ->
-  bind_favorits_tab()
-  bind_results_tab()
-  bind_my_links_tab()
+#  bind_favorits_tab()
+#  bind_results_tab()
+#  bind_my_links_tab()
   link_expand()
   detect_on_scrall_2_the_bottom()
+  on_tab_click()
 
   $('.details-pane').height($(document).height()-100)
 

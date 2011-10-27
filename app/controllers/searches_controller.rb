@@ -1,17 +1,27 @@
 class SearchesController < ApplicationController
   layout "general"
+  respond_to :html
 
   # GET /searches
   # GET /searches.json
   def index
-    value = params[:search][:value]
-    #@favorit = Favorit.new
-    @links = Link.where("description LIKE ?", "%#{value}%")
-    #
-    #respond_to do |format|
-    #  format.html # index.html.erb
-    #  format.json { render json: @searches }
-    #end
+    raise 'no page params' if params[:search][:page].blank?
+    page, value = params[:search][:page], params[:search][:value]
+
+    if page.include? 'home'
+      logger.debug('!! searging by all')
+      @links = Link.search value
+    elsif page.include? 'favorit'
+      logger.debug('!! searging by favorits')
+      @links = Link.search value, :with => {:favorits_user_id => current_user.id}
+    elsif page.include? 'links'
+      logger.debug('!! searging by my links')
+      @links = Link.search value, :with => {:user_id => current_user.id}
+    end
+
+    respond_to do |format|
+      format.html
+    end
   end
 
   # GET /searches/1

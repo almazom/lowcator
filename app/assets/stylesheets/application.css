@@ -3,8 +3,7 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require gritter
- *= require_tree . 
+ *= require_tree .
 */
 
 
@@ -88,6 +87,10 @@ input#search_value {
     height: 38px;
 }
 
+.span10 h2{
+ padding: 20px 0 0 30px;
+}
+
 .span10 .tweet {
     padding: 0px 20px;
     font-size: 13px;
@@ -137,6 +140,12 @@ tweet.favorited .tweet-dogear {
     width: 20px;
     margin-top: 3px;
     padding: 10px;
+}
+
+.tweet-image img{
+    width: 16px;
+    height: 16px;
+    padding: 10px 0 0 0;
 }
 
 .tweet-actions a span i {
